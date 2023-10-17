@@ -7,21 +7,20 @@ console.log(arrayRandomNumbers)
 alertMessage("I tuoi numeri sono" + ' ' + arrayRandomNumbers + '.Ricordali!');
 
 // Dopo 30 secondi l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt():
-// - far partire un timer di 30 secondi
-// - scaduto il timer, definire una ciclo per chiedere all'utente 5 numeri tramite prompt e inserirli in un array
-let arrayUserNumbers = []
-setTimeout(getArrayOfUserNumbers, 5000);
-    function getArrayOfUserNumbers () {
-    const arrayUserNumbers = [];
-    while (arrayRandomNumbers.length < 5) {
+// - dichiaro un array vuoto
+ const arrayUserNumbers = [];
+
+// - imposto un timeout dopo il quale verrà eseguita la funzione per chiedere i numeri all'utente e pusharli nell'array
+setTimeout(getArrayOfUserNumbers, 3000)
+
+function getArrayOfUserNumbers () {
+    while (arrayUserNumbers.length < 5) {
         let userNumber = prompt('Inserisci numero');
         arrayUserNumbers.push(userNumber);
     }
     return arrayUserNumbers;
     }
-console.log(arrayUserNumbers)
-
-
+    console.log(arrayUserNumbers);
 
 
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati:
@@ -50,4 +49,5 @@ function getRandomInt(min, max) {
 function alertMessage(message) {
     alert(message);
 }
+
 
