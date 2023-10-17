@@ -2,17 +2,19 @@
 // - definire una funzione per generare 5 numeri casuali dentro un Array
 let arrayRandomNumbers = getArrayOfRandomNumbers(1, 100, 5);
 
-
 // - stampare i numeri in pagina tramite un alert
 alertMessage("I tuoi numeri sono" + ' ' + arrayRandomNumbers + '.Ricordali!');
 
+// - stampare un alert per avvertire l'utente di aspettare 30 secondi
+alertMessage('Ora clicca su ok e aspetta 30 secondi...')
+
 // Dopo 30 secondi l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt():
 // - dichiaro un array vuoto
- let arrayUserNumbers = [];
+let arrayUserNumbers = [];
 
 // - imposto un timeout dopo il quale verrà eseguita la funzione per chiedere i numeri all'utente e pusharli nell'array
-// setTimeout(getArrayOfUserNumbers, 3000);
-arrayUserNumbers = getArrayOfUserNumbers();
+setTimeout(getArrayOfUserNumbers, 30000);
+// arrayUserNumbers = getArrayOfUserNumbers();
 function getArrayOfUserNumbers () {
     while (arrayUserNumbers.length < 5) {
         let userString = prompt('Inserisci numero');
@@ -23,6 +25,7 @@ function getArrayOfUserNumbers () {
     }
 
 
+setTimeout(function(){
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati:
 // - controllare se e quanti numeri,di quelli inseriti dall'utente, siano presenti nell'array di numeri casuali, per calcolare il punteggio
 let score = 0;
@@ -43,6 +46,7 @@ if (score === 0) {
 } else {
     alertMessage("Hai ricordato" + ' ' + score + ' ' + "numeri:" + ' ' + arrayRightNumbers)
 }
+}, 30000);
 
 
 function getArrayOfRandomNumbers(minRange, maxRange, number) {
@@ -66,5 +70,3 @@ function getRandomInt(min, max) {
 function alertMessage(message) {
     alert(message);
 }
-
-
