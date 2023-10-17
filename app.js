@@ -1,31 +1,48 @@
 // Visualizzare in pagina 5 numeri casuali:
 // - definire una funzione per generare 5 numeri casuali dentro un Array
 let arrayRandomNumbers = getArrayOfRandomNumbers(1, 100, 5);
-console.log(arrayRandomNumbers)
+
 
 // - stampare i numeri in pagina tramite un alert
 alertMessage("I tuoi numeri sono" + ' ' + arrayRandomNumbers + '.Ricordali!');
 
 // Dopo 30 secondi l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt():
 // - dichiaro un array vuoto
- const arrayUserNumbers = [];
+ let arrayUserNumbers = [];
 
 // - imposto un timeout dopo il quale verrà eseguita la funzione per chiedere i numeri all'utente e pusharli nell'array
-setTimeout(getArrayOfUserNumbers, 3000)
-
+// setTimeout(getArrayOfUserNumbers, 3000);
+arrayUserNumbers = getArrayOfUserNumbers();
 function getArrayOfUserNumbers () {
     while (arrayUserNumbers.length < 5) {
-        let userNumber = prompt('Inserisci numero');
+        let userString = prompt('Inserisci numero');
+        let userNumber = parseInt(userString)
         arrayUserNumbers.push(userNumber);
     }
     return arrayUserNumbers;
     }
-    console.log(arrayUserNumbers);
 
 
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati:
-// - controllare se e quanti numeri,di quelli inseriti dall'utente, siano presenti nell'array di numeri casuali
+// - controllare se e quanti numeri,di quelli inseriti dall'utente, siano presenti nell'array di numeri casuali, per calcolare il punteggio
+let score = 0;
+let arrayRightNumbers = [];
+
+for (let i = 0; i < arrayUserNumbers.length; i++) {
+    let currentNumber = arrayUserNumbers[i];
+
+    if (arrayRandomNumbers.includes(currentNumber) === true) {
+        score += 1;
+        arrayRightNumbers.push(currentNumber);
+    }
+}
+
 // - stampare il punteggio
+if (score === 0) {
+    alertMessage('Non hai ricordato nessun numero scarso!')
+} else {
+    alertMessage("Hai ricordato" + ' ' + score + ' ' + "numeri:" + ' ' + arrayRightNumbers)
+}
 
 
 function getArrayOfRandomNumbers(minRange, maxRange, number) {
