@@ -14,7 +14,7 @@ let arrayUserNumbers = [];
 
 // - imposto un timeout dopo il quale verrà eseguita la funzione per chiedere i numeri all'utente e pusharli nell'array
 setTimeout(getArrayOfUserNumbers, 30000);
-// arrayUserNumbers = getArrayOfUserNumbers();
+
 function getArrayOfUserNumbers () {
     while (arrayUserNumbers.length < 5) {
         let userString = prompt('Inserisci numero');
@@ -34,10 +34,10 @@ let arrayRightNumbers = [];
 for (let i = 0; i < arrayUserNumbers.length; i++) {
     let currentNumber = arrayUserNumbers[i];
 
-    if (arrayRandomNumbers.includes(currentNumber) === true) {
+    if (arrayRandomNumbers.includes(currentNumber) && !arrayRightNumbers.includes(currentNumber)) {
         score += 1;
         arrayRightNumbers.push(currentNumber);
-    }
+    } 
 }
 
 // - stampare il punteggio
